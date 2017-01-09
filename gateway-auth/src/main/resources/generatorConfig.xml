@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+	<context id="Tables" targetRuntime="MyBatis3">
+		<property name="javaFileEncoding" value="utf-8" />
+
+		<!-- pagination plugin -->
+		<!--<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />-->
+		<!--<plugin type="org.mybatis.generator.plugin.PaginationMysqlPlugin" />-->
+		<!--<plugin type="org.mybatis.generator.plugin.CommentPlugin" />-->
+
+		<commentGenerator>
+			<!-- 不生成注解信息 -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+						connectionURL="jdbc:mysql://localhost/test"
+						userId="root"
+						password="root" />
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- generate Model -->
+		<javaModelGenerator targetPackage="com.us.auth.storage.model" targetProject="src/main/java" />
+
+		<!-- generate xml -->
+		<sqlMapGenerator targetPackage="com.us.auth.storage.mapper" targetProject="src/main/resources/" />
+
+		<!-- generate Mapper -->
+		<javaClientGenerator targetPackage="com.us.auth.storage.mapper" targetProject="src/main/java" type="XMLMAPPER" />
+
+		<table tableName="user" domainObjectName="User">
+			<generatedKey column="id" sqlStatement="MySQL" identity="true" />
+		</table>
+
+	</context>
+
+</generatorConfiguration>
